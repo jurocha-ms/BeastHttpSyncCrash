@@ -79,16 +79,18 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <!--
+        Required when NDEBUG is present, else C1001 happens.
+        boost\beast\http\impl\serializer.hpp(54):
+        fatal error C1001: An internal error has occurred in the compiler.
+      -->
+      <Optimization>MinSpace</Optimization>
       <PreprocessorDefinitions>
         NDEBUG;
         %(PreprocessorDefinitions)
       </PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
