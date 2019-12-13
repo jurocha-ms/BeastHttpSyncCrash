@@ -55,7 +55,6 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>
         BOOST_ALL_NO_LIB=1;
-        BOOST_ERROR_CODE_HEADER_ONLY;
         _SILENCE_CXX17_ALLOCATOR_VOID_DEPRECATION_WARNING;
         _WIN32_WINNT=0x0601;
         WIN32_LEAN_AND_MEAN;
