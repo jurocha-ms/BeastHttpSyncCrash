@@ -20,14 +20,14 @@ int main()
 	string target = "/~fdc/picture-of-something.jpg";
 
 	boost::asio::io_context context;
-	boost::asio::ip::tcp::resolver m_resolver{ context };
-	auto const resolveResult = m_resolver.resolve(host, port);
-	tcp::socket socket{m_context};
+	boost::asio::ip::tcp::resolver resolver{ context };
+	auto const resolveResult = resolver.resolve(host, port);
+	tcp::socket socket{context};
 	connect(socket, resolveResult);
 
-	http::request<http::string_body> request{verb::get, url.Target(), 11};
-	request.set(field::host, url.host);
-	request.set(field::user_agent, BOOST_BEAST_VERSION_STRING);
+	http::request<http::string_body> request{ http::verb::get, target, 11};
+	request.set(http::field::host, host);
+	request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
 
 	http::write(socket, request);
 
@@ -43,7 +43,7 @@ int main()
 	bodyStream << response.body();
 
 	error_code ec;
-	stream.socket().shutdown(tcp::socket::shutdown_both, ec);
+	socket.shutdown(tcp::socket::shutdown_both, ec);
 	if (ec && ec != errc::not_connected)
 		throw system_error(ec);
 }
