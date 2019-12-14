@@ -8,6 +8,8 @@ This is a proof of concept of a bug found when using Boost/Beast HTTP features o
   - Individual components
     - Compilers, build tools and runtimes
       - **MSVC v141 - VS 2017 C++ x64/x86 build tools (v14.16)**
+      - (Optional) **MSVC v140 - VS 2015 C++ build tools (v14.00)**
+      - (Optional) **MSVC v142 - VS 2019 C++ x64/x86 build tools (v14.23)**
     - SDKs, libraries and frameworks
       - **Windows 10 SDK (10.0.18362.0)**
 
@@ -66,4 +68,4 @@ Vc141Boost171.exe!boost::beast::buffers_cat_view<boost::beast::detail::buffers_r
 Earlier versions don't run into this bug.
 - The bug happens only in the `Release|x86` flavor, when using the `NDEBUG` preprocessor defintion.\
   See `Vc141Boost171.vcxproj`.
-- The bug does not happen when building with MSVC 14.2 (`v142`).
+- The bug does not happen when building with MSVC 14.2 (`v142`) nor 14.0 (`v140`).
