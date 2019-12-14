@@ -17,7 +17,8 @@ This is a proof of concept of a bug found when using Boost/Beast HTTP features o
 
 1. Clone this repository.
 1. Open `BeastHttpSyncCrash.sln`.
-1. Build the solution for `Release|x86`.
+1. Build the solution for `Release|x86`.\
+   Some projects may fail if the optional compiler collections are not installed. Those can be ignored.
 1. Run project `Vc141Boost171`.
 
 # Expected behavior
